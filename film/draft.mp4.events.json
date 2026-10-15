@@ -1,0 +1,902 @@
+[
+ {
+  "t": 0.1333,
+  "frame": 4,
+  "type": "enter",
+  "label": "#w0"
+ },
+ {
+  "t": 0.2,
+  "frame": 6,
+  "type": "enter",
+  "label": "Um"
+ },
+ {
+  "t": 0.2,
+  "frame": 6,
+  "type": "word",
+  "label": "Um"
+ },
+ {
+  "t": 0.3333,
+  "frame": 10,
+  "type": "enter",
+  "label": "Bloom"
+ },
+ {
+  "t": 0.3333,
+  "frame": 10,
+  "type": "word",
+  "label": "Bloom"
+ },
+ {
+  "t": 0.4667,
+  "frame": 14,
+  "type": "enter",
+  "label": "filter"
+ },
+ {
+  "t": 0.4667,
+  "frame": 14,
+  "type": "word",
+  "label": "filter"
+ },
+ {
+  "t": 0.6,
+  "frame": 18,
+  "type": "enter",
+  "label": "não"
+ },
+ {
+  "t": 0.6,
+  "frame": 18,
+  "type": "word",
+  "label": "não"
+ },
+ {
+  "t": 0.7333,
+  "frame": 22,
+  "type": "enter",
+  "label": "guarda"
+ },
+ {
+  "t": 0.7333,
+  "frame": 22,
+  "type": "word",
+  "label": "guarda"
+ },
+ {
+  "t": 0.8333,
+  "frame": 25,
+  "type": "enter",
+  "label": "#h90"
+ },
+ {
+  "t": 0.8333,
+  "frame": 25,
+  "type": "press",
+  "label": "punch gato -> 90"
+ },
+ {
+  "t": 0.8667,
+  "frame": 26,
+  "type": "enter",
+  "label": "a"
+ },
+ {
+  "t": 0.8667,
+  "frame": 26,
+  "type": "word",
+  "label": "a"
+ },
+ {
+  "t": 0.9333,
+  "frame": 28,
+  "type": "enter",
+  "label": "#h95"
+ },
+ {
+  "t": 0.9333,
+  "frame": 28,
+  "type": "press",
+  "label": "punch gato -> 95"
+ },
+ {
+  "t": 1,
+  "frame": 30,
+  "type": "enter",
+  "label": "palavra."
+ },
+ {
+  "t": 1,
+  "frame": 30,
+  "type": "word",
+  "label": "palavra."
+ },
+ {
+  "t": 1.0333,
+  "frame": 31,
+  "type": "enter",
+  "label": "#h101"
+ },
+ {
+  "t": 1.0333,
+  "frame": 31,
+  "type": "press",
+  "label": "punch gato -> 101"
+ },
+ {
+  "t": 1.9333,
+  "frame": 58,
+  "type": "exit",
+  "label": "#w0"
+ },
+ {
+  "t": 2.4667,
+  "frame": 74,
+  "type": "exit",
+  "label": "#L1"
+ },
+ {
+  "t": 2.7333,
+  "frame": 82,
+  "type": "enter",
+  "label": "Guarda"
+ },
+ {
+  "t": 2.7333,
+  "frame": 82,
+  "type": "word",
+  "label": "Guarda"
+ },
+ {
+  "t": 2.8,
+  "frame": 84,
+  "type": "enter",
+  "label": "#w1"
+ },
+ {
+  "t": 2.8667,
+  "frame": 86,
+  "type": "enter",
+  "label": "só"
+ },
+ {
+  "t": 2.8667,
+  "frame": 86,
+  "type": "word",
+  "label": "só"
+ },
+ {
+  "t": 3,
+  "frame": 90,
+  "type": "enter",
+  "label": "os"
+ },
+ {
+  "t": 3,
+  "frame": 90,
+  "type": "word",
+  "label": "os"
+ },
+ {
+  "t": 3.1333,
+  "frame": 94,
+  "type": "enter",
+  "label": "furos"
+ },
+ {
+  "t": 3.1333,
+  "frame": 94,
+  "type": "word",
+  "label": "furos"
+ },
+ {
+  "t": 3.2667,
+  "frame": 98,
+  "type": "enter",
+  "label": "que"
+ },
+ {
+  "t": 3.2667,
+  "frame": 98,
+  "type": "word",
+  "label": "que"
+ },
+ {
+  "t": 3.3667,
+  "frame": 101,
+  "type": "enter",
+  "label": "#h88"
+ },
+ {
+  "t": 3.3667,
+  "frame": 101,
+  "type": "press",
+  "label": "punch sol -> 88"
+ },
+ {
+  "t": 3.4,
+  "frame": 102,
+  "type": "enter",
+  "label": "ela"
+ },
+ {
+  "t": 3.4,
+  "frame": 102,
+  "type": "word",
+  "label": "ela"
+ },
+ {
+  "t": 3.4667,
+  "frame": 104,
+  "type": "enter",
+  "label": "#h97"
+ },
+ {
+  "t": 3.4667,
+  "frame": 104,
+  "type": "press",
+  "label": "punch sol -> 97"
+ },
+ {
+  "t": 3.5333,
+  "frame": 106,
+  "type": "enter",
+  "label": "deixa."
+ },
+ {
+  "t": 3.5333,
+  "frame": 106,
+  "type": "word",
+  "label": "deixa."
+ },
+ {
+  "t": 4.0667,
+  "frame": 122,
+  "type": "exit",
+  "label": "#w1"
+ },
+ {
+  "t": 4.2667,
+  "frame": 128,
+  "type": "enter",
+  "label": "#w2"
+ },
+ {
+  "t": 4.7667,
+  "frame": 143,
+  "type": "enter",
+  "label": "#h92"
+ },
+ {
+  "t": 4.7667,
+  "frame": 143,
+  "type": "press",
+  "label": "punch rio -> 92"
+ },
+ {
+  "t": 4.8667,
+  "frame": 146,
+  "type": "enter",
+  "label": "#h99"
+ },
+ {
+  "t": 4.8667,
+  "frame": 146,
+  "type": "press",
+  "label": "punch rio -> 99"
+ },
+ {
+  "t": 4.9667,
+  "frame": 149,
+  "type": "enter",
+  "label": "#h103"
+ },
+ {
+  "t": 4.9667,
+  "frame": 149,
+  "type": "press",
+  "label": "punch rio -> 103"
+ },
+ {
+  "t": 5.2667,
+  "frame": 158,
+  "type": "exit",
+  "label": "#w2"
+ },
+ {
+  "t": 5.4,
+  "frame": 162,
+  "type": "enter",
+  "label": "#w3"
+ },
+ {
+  "t": 5.8333,
+  "frame": 175,
+  "type": "enter",
+  "label": "#h94"
+ },
+ {
+  "t": 5.8333,
+  "frame": 175,
+  "type": "press",
+  "label": "punch mar -> 94"
+ },
+ {
+  "t": 6.0333,
+  "frame": 181,
+  "type": "enter",
+  "label": "#h102"
+ },
+ {
+  "t": 6.0333,
+  "frame": 181,
+  "type": "press",
+  "label": "punch mar -> 102"
+ },
+ {
+  "t": 6.2,
+  "frame": 186,
+  "type": "exit",
+  "label": "#L2"
+ },
+ {
+  "t": 6.2667,
+  "frame": 188,
+  "type": "exit",
+  "label": "#w3"
+ },
+ {
+  "t": 6.5333,
+  "frame": 196,
+  "type": "enter",
+  "label": "#q0"
+ },
+ {
+  "t": 6.5333,
+  "frame": 196,
+  "type": "enter",
+  "label": "Pra"
+ },
+ {
+  "t": 6.5333,
+  "frame": 196,
+  "type": "word",
+  "label": "Pra"
+ },
+ {
+  "t": 6.6333,
+  "frame": 199,
+  "type": "enter",
+  "label": "consultar,"
+ },
+ {
+  "t": 6.6333,
+  "frame": 199,
+  "type": "word",
+  "label": "consultar,"
+ },
+ {
+  "t": 6.7333,
+  "frame": 202,
+  "type": "enter",
+  "label": "olhe"
+ },
+ {
+  "t": 6.7333,
+  "frame": 202,
+  "type": "word",
+  "label": "olhe"
+ },
+ {
+  "t": 6.8333,
+  "frame": 205,
+  "type": "enter",
+  "label": "os"
+ },
+ {
+  "t": 6.8333,
+  "frame": 205,
+  "type": "word",
+  "label": "os"
+ },
+ {
+  "t": 6.9333,
+  "frame": 208,
+  "type": "enter",
+  "label": "mesmos"
+ },
+ {
+  "t": 6.9333,
+  "frame": 208,
+  "type": "word",
+  "label": "mesmos"
+ },
+ {
+  "t": 7.0333,
+  "frame": 211,
+  "type": "enter",
+  "label": "furos."
+ },
+ {
+  "t": 7.0333,
+  "frame": 211,
+  "type": "word",
+  "label": "furos."
+ },
+ {
+  "t": 7.2667,
+  "frame": 218,
+  "type": "enter",
+  "label": "#q0p0"
+ },
+ {
+  "t": 7.2667,
+  "frame": 218,
+  "type": "show",
+  "label": "probe lua? -> 95"
+ },
+ {
+  "t": 7.3667,
+  "frame": 221,
+  "type": "enter",
+  "label": "#q0p1"
+ },
+ {
+  "t": 7.3667,
+  "frame": 221,
+  "type": "show",
+  "label": "probe lua? -> 102"
+ },
+ {
+  "t": 7.4667,
+  "frame": 224,
+  "type": "enter",
+  "label": "#q0p2"
+ },
+ {
+  "t": 7.4667,
+  "frame": 224,
+  "type": "show",
+  "label": "probe lua? -> 91"
+ },
+ {
+  "t": 7.7333,
+  "frame": 232,
+  "type": "exit",
+  "label": "#q0"
+ },
+ {
+  "t": 7.8667,
+  "frame": 236,
+  "type": "exit",
+  "label": "#L3a"
+ },
+ {
+  "t": 8.1333,
+  "frame": 244,
+  "type": "enter",
+  "label": "Um"
+ },
+ {
+  "t": 8.1333,
+  "frame": 244,
+  "type": "word",
+  "label": "Um"
+ },
+ {
+  "t": 8.2667,
+  "frame": 248,
+  "type": "enter",
+  "label": "furo"
+ },
+ {
+  "t": 8.2667,
+  "frame": 248,
+  "type": "word",
+  "label": "furo"
+ },
+ {
+  "t": 8.4,
+  "frame": 252,
+  "type": "enter",
+  "label": "apagado:"
+ },
+ {
+  "t": 8.4,
+  "frame": 252,
+  "type": "word",
+  "label": "apagado:"
+ },
+ {
+  "t": 8.5667,
+  "frame": 257,
+  "type": "enter",
+  "label": "com"
+ },
+ {
+  "t": 8.5667,
+  "frame": 257,
+  "type": "word",
+  "label": "com"
+ },
+ {
+  "t": 8.7333,
+  "frame": 262,
+  "type": "enter",
+  "label": "certeza"
+ },
+ {
+  "t": 8.7333,
+  "frame": 262,
+  "type": "word",
+  "label": "certeza"
+ },
+ {
+  "t": 9,
+  "frame": 270,
+  "type": "enter",
+  "label": "não."
+ },
+ {
+  "t": 9,
+  "frame": 270,
+  "type": "word",
+  "label": "não."
+ },
+ {
+  "t": 10.8667,
+  "frame": 326,
+  "type": "exit",
+  "label": "#L3"
+ },
+ {
+  "t": 11,
+  "frame": 330,
+  "type": "enter",
+  "label": "#q1"
+ },
+ {
+  "t": 11,
+  "frame": 330,
+  "type": "hide",
+  "label": "#q0r0"
+ },
+ {
+  "t": 11,
+  "frame": 330,
+  "type": "hide",
+  "label": "#q0r1"
+ },
+ {
+  "t": 11,
+  "frame": 330,
+  "type": "hide",
+  "label": "#q0r2"
+ },
+ {
+  "t": 11,
+  "frame": 330,
+  "type": "hide",
+  "label": "#q0p0"
+ },
+ {
+  "t": 11,
+  "frame": 330,
+  "type": "hide",
+  "label": "#q0p1"
+ },
+ {
+  "t": 11,
+  "frame": 330,
+  "type": "hide",
+  "label": "#q0p2"
+ },
+ {
+  "t": 11,
+  "frame": 330,
+  "type": "cut",
+  "label": "macro -> pão?"
+ },
+ {
+  "t": 11.6,
+  "frame": 348,
+  "type": "enter",
+  "label": "#q1p0"
+ },
+ {
+  "t": 11.6,
+  "frame": 348,
+  "type": "show",
+  "label": "probe pão? -> 90"
+ },
+ {
+  "t": 11.7,
+  "frame": 351,
+  "type": "enter",
+  "label": "#q1p1"
+ },
+ {
+  "t": 11.7,
+  "frame": 351,
+  "type": "show",
+  "label": "probe pão? -> 97"
+ },
+ {
+  "t": 11.8,
+  "frame": 354,
+  "type": "enter",
+  "label": "#q1p2"
+ },
+ {
+  "t": 11.8,
+  "frame": 354,
+  "type": "show",
+  "label": "probe pão? -> 99"
+ },
+ {
+  "t": 12.0667,
+  "frame": 362,
+  "type": "enter",
+  "label": "#tag0"
+ },
+ {
+  "t": 12.0667,
+  "frame": 362,
+  "type": "show",
+  "label": "tag gato"
+ },
+ {
+  "t": 12.2,
+  "frame": 366,
+  "type": "enter",
+  "label": "Tudo"
+ },
+ {
+  "t": 12.2,
+  "frame": 366,
+  "type": "word",
+  "label": "Tudo"
+ },
+ {
+  "t": 12.2667,
+  "frame": 368,
+  "type": "enter",
+  "label": "#tag1"
+ },
+ {
+  "t": 12.2667,
+  "frame": 368,
+  "type": "show",
+  "label": "tag sol"
+ },
+ {
+  "t": 12.3333,
+  "frame": 370,
+  "type": "enter",
+  "label": "aceso:"
+ },
+ {
+  "t": 12.3333,
+  "frame": 370,
+  "type": "word",
+  "label": "aceso:"
+ },
+ {
+  "t": 12.4667,
+  "frame": 374,
+  "type": "enter",
+  "label": "#tag2"
+ },
+ {
+  "t": 12.4667,
+  "frame": 374,
+  "type": "show",
+  "label": "tag rio"
+ },
+ {
+  "t": 12.6333,
+  "frame": 379,
+  "type": "enter",
+  "label": "talvez."
+ },
+ {
+  "t": 12.6333,
+  "frame": 379,
+  "type": "word",
+  "label": "talvez."
+ },
+ {
+  "t": 12.8,
+  "frame": 384,
+  "type": "enter",
+  "label": "Pode"
+ },
+ {
+  "t": 12.8,
+  "frame": 384,
+  "type": "word",
+  "label": "Pode"
+ },
+ {
+  "t": 12.9333,
+  "frame": 388,
+  "type": "enter",
+  "label": "ser"
+ },
+ {
+  "t": 12.9333,
+  "frame": 388,
+  "type": "word",
+  "label": "ser"
+ },
+ {
+  "t": 13.0667,
+  "frame": 392,
+  "type": "enter",
+  "label": "coincidência."
+ },
+ {
+  "t": 13.0667,
+  "frame": 392,
+  "type": "word",
+  "label": "coincidência."
+ },
+ {
+  "t": 13.4667,
+  "frame": 404,
+  "type": "exit",
+  "label": "#q1"
+ },
+ {
+  "t": 14.9333,
+  "frame": 448,
+  "type": "exit",
+  "label": "#L4"
+ },
+ {
+  "t": 15.0667,
+  "frame": 452,
+  "type": "exit",
+  "label": "#tag0"
+ },
+ {
+  "t": 15.0667,
+  "frame": 452,
+  "type": "exit",
+  "label": "#tag1"
+ },
+ {
+  "t": 15.0667,
+  "frame": 452,
+  "type": "exit",
+  "label": "#tag2"
+ },
+ {
+  "t": 15.2,
+  "frame": 456,
+  "type": "hide",
+  "label": "#q1p0"
+ },
+ {
+  "t": 15.2,
+  "frame": 456,
+  "type": "hide",
+  "label": "#q1p1"
+ },
+ {
+  "t": 15.2,
+  "frame": 456,
+  "type": "hide",
+  "label": "#q1p2"
+ },
+ {
+  "t": 15.5333,
+  "frame": 466,
+  "type": "enter",
+  "label": "Nunca"
+ },
+ {
+  "t": 15.5333,
+  "frame": 466,
+  "type": "word",
+  "label": "Nunca"
+ },
+ {
+  "t": 15.6667,
+  "frame": 470,
+  "type": "enter",
+  "label": "erra"
+ },
+ {
+  "t": 15.6667,
+  "frame": 470,
+  "type": "word",
+  "label": "erra"
+ },
+ {
+  "t": 15.8,
+  "frame": 474,
+  "type": "enter",
+  "label": "um"
+ },
+ {
+  "t": 15.8,
+  "frame": 474,
+  "type": "word",
+  "label": "um"
+ },
+ {
+  "t": 16.0333,
+  "frame": 481,
+  "type": "enter",
+  "label": "não."
+ },
+ {
+  "t": 16.0333,
+  "frame": 481,
+  "type": "word",
+  "label": "não."
+ },
+ {
+  "t": 16.2,
+  "frame": 486,
+  "type": "enter",
+  "label": "Às"
+ },
+ {
+  "t": 16.2,
+  "frame": 486,
+  "type": "word",
+  "label": "Às"
+ },
+ {
+  "t": 16.3333,
+  "frame": 490,
+  "type": "enter",
+  "label": "vezes,"
+ },
+ {
+  "t": 16.3333,
+  "frame": 490,
+  "type": "word",
+  "label": "vezes,"
+ },
+ {
+  "t": 16.5,
+  "frame": 495,
+  "type": "enter",
+  "label": "um"
+ },
+ {
+  "t": 16.5,
+  "frame": 495,
+  "type": "word",
+  "label": "um"
+ },
+ {
+  "t": 16.6667,
+  "frame": 500,
+  "type": "enter",
+  "label": "sim."
+ },
+ {
+  "t": 16.6667,
+  "frame": 500,
+  "type": "word",
+  "label": "sim."
+ },
+ {
+  "t": 17.8,
+  "frame": 534,
+  "type": "exit",
+  "label": "#L5"
+ },
+ {
+  "t": 18.2,
+  "frame": 546,
+  "type": "enter",
+  "label": "#title"
+ }
+]

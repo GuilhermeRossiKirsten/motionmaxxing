@@ -1,0 +1,97 @@
+[
+ {
+  "t": 0.833,
+  "sfx": "audio/sfx/punch.wav",
+  "gain": -6
+ },
+ {
+  "t": 0.933,
+  "sfx": "audio/sfx/punch.wav",
+  "gain": -6
+ },
+ {
+  "t": 1.033,
+  "sfx": "audio/sfx/punch.wav",
+  "gain": -6
+ },
+ {
+  "t": 3.367,
+  "sfx": "audio/sfx/punch.wav",
+  "gain": -6
+ },
+ {
+  "t": 3.467,
+  "sfx": "audio/sfx/punch.wav",
+  "gain": -6
+ },
+ {
+  "t": 4.767,
+  "sfx": "audio/sfx/punch.wav",
+  "gain": -6
+ },
+ {
+  "t": 4.867,
+  "sfx": "audio/sfx/punch.wav",
+  "gain": -6
+ },
+ {
+  "t": 4.967,
+  "sfx": "audio/sfx/punch.wav",
+  "gain": -6
+ },
+ {
+  "t": 5.833,
+  "sfx": "audio/sfx/punch.wav",
+  "gain": -6
+ },
+ {
+  "t": 6.033,
+  "sfx": "audio/sfx/punch.wav",
+  "gain": -6
+ },
+ {
+  "t": 7.267,
+  "sfx": "audio/sfx/probe.wav",
+  "gain": -12
+ },
+ {
+  "t": 7.367,
+  "sfx": "audio/sfx/probe.wav",
+  "gain": -12
+ },
+ {
+  "t": 7.467,
+  "sfx": "audio/sfx/probe.wav",
+  "gain": -12
+ },
+ {
+  "t": 11.6,
+  "sfx": "audio/sfx/probe.wav",
+  "gain": -12
+ },
+ {
+  "t": 11.7,
+  "sfx": "audio/sfx/probe.wav",
+  "gain": -12
+ },
+ {
+  "t": 11.8,
+  "sfx": "audio/sfx/probe.wav",
+  "gain": -12
+ },
+ {
+  "t": 8.333333333333334,
+  "sfx": "audio/sfx/nao.wav",
+  "gain": -4
+ },
+ {
+  "t": 12.2,
+  "sfx": "audio/sfx/talvez.wav",
+  "gain": -8
+ },
+ {
+  "t": 18.2,
+  "sfx": "audio/sfx/end.wav",
+  "gain": -3
+ }
+]

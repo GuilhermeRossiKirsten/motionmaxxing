@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Bloom filter</title>
+<meta name="viewport" content="width=1920, height=1080">
+<link rel="stylesheet" href="./runtime/fonts.css">
+<style>
+/* ACCENT = luz âmbar atravessando um furo = bit ligado. Nada mais é âmbar. */
+:root {
+  --desk: #15120E;
+  --paper: #EDE4D0;
+  --paper-2: #DCCDAE;
+  --ink: #EFE6D4;          /* texto sobre a mesa */
+  --pencil: #5B4631;       /* tinta sobre o papel */
+  --accent: #FFB547;
+  --font: "Inter", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+#main { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; color: var(--ink); font-family: var(--font); font-weight: 470;
+  background: radial-gradient(ellipse 1500px 900px at 28% 8%, #2B241B 0%, #1A1611 45%, var(--desk) 75%, #0C0A08 100%); }
+#grain { position: absolute; inset: 0; opacity: .22; mix-blend-mode: overlay; pointer-events: none; }
+
+#cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+
+/* the tape */
+#tape { position: absolute; top: 600px; height: 170px; left: -9792px; width: 21504px;
+  background: linear-gradient(180deg, #F4ECDB 0%, var(--paper) 40%, var(--paper-2) 100%);
+  box-shadow: 0 0 0 1px rgba(255,190,110,.10), 0 -6px 26px rgba(255,170,70,.16), 0 34px 70px rgba(0,0,0,.65), 0 8px 14px rgba(0,0,0,.45); }
+#tape .tex { position: absolute; inset: 0; opacity: .5; mix-blend-mode: multiply; }
+.cell { position: absolute; top: 0; width: 112px; height: 170px; }
+.ring { position: absolute; left: 28px; top: 57px; width: 56px; height: 56px; border-radius: 50%;
+  box-shadow: inset 0 0 0 2px rgba(91,70,49,.20); }
+.hole { position: absolute; left: 28px; top: 57px; width: 56px; height: 56px; border-radius: 50%;
+  background: radial-gradient(circle at 50% 46%, #FFF4D6 0%, #FFD283 30%, var(--accent) 62%, #D9741C 100%);
+  box-shadow: inset 0 3px 5px rgba(80,40,0,.55), 0 0 22px 4px rgba(255,181,71,.45), 0 0 70px 14px rgba(255,160,60,.18); }
+.sprocket { position: absolute; left: 49px; top: 130px; width: 14px; height: 14px; border-radius: 50%;
+  background: #2A2018; box-shadow: inset 0 2px 3px rgba(0,0,0,.7); }
+.num { position: absolute; left: 0; width: 112px; top: 18px; text-align: center; font-size: 17px; font-weight: 500; color: rgba(91,70,49,.55); font-variant-numeric: tabular-nums; }
+.tag { position: absolute; left: -14px; width: 140px; top: 6px; text-align: center; font-size: 36px; line-height: 44px; border-radius: 6px; font-weight: 560; color: var(--pencil); background: var(--paper); }
+
+/* hash rays */
+#rays { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; }
+#rays line { stroke-linecap: round; }
+.ins { stroke: var(--accent); stroke-width: 4; filter: drop-shadow(0 0 6px rgba(255,181,71,.7)); }
+.qry { stroke: var(--ink); stroke-width: 3; opacity: .9; }
+.probe { position: absolute; width: 92px; height: 92px; border-radius: 50%; box-shadow: 0 0 0 3px var(--ink), 0 0 18px rgba(0,0,0,.4); }
+
+/* the words being hashed: physical, inside the camera */
+.word { position: absolute; left: 0; width: 1920px; top: 318px; text-align: center; font-size: 132px; line-height: 132px; font-weight: 520; letter-spacing: -.02em; white-space: pre; color: var(--ink); }
+
+/* the voice: screen space, centred, paced like speech */
+.line { position: absolute; left: 0; width: 1920px; top: 118px; text-align: center; font-size: 62px; line-height: 76px; font-weight: 460; letter-spacing: -.01em; white-space: pre; color: var(--ink); }
+.line b { font-weight: 640; }
+#title { position: absolute; left: 0; width: 1920px; top: 390px; text-align: center; font-size: 150px; line-height: 150px; font-weight: 560; letter-spacing: -.035em; color: var(--ink); }
+</style>
+</head>
+<body>
+<div id="main">
+  <div id="cam">
+    <div id="tape"><svg class="tex" width="21504" height="170"><filter id="pt"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" seed="4"/><feColorMatrix values="0 0 0 0 .35  0 0 0 0 .27  0 0 0 0 .18  0 0 0 .55 0"/></filter><rect width="100%" height="100%" filter="url(#pt)"/></svg></div>
+    <svg id="rays" viewBox="0 0 1920 1080"></svg>
+    <div id="words"></div>
+  </div>
+  <svg id="grain" width="1920" height="1080"><filter id="gn"><feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="2" seed="9"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#gn)"/></svg>
+
+  <div id="L1" class="line">Um Bloom filter não guarda a palavra.</div>
+  <div id="L2" class="line">Guarda só os furos que ela deixa.</div>
+  <div id="L3a" class="line">Pra consultar, olhe os mesmos furos.</div>
+  <div id="L3" class="line">Um furo apagado: com certeza <b>não</b>.</div>
+  <div id="L4" class="line">Tudo aceso: <b>talvez</b>. Pode ser coincidência.</div>
+  <div id="L5" class="line">Nunca erra um não. Às vezes, um sim.</div>
+  <div id="title">Bloom filter</div>
+</div>
+
+<script src="./runtime/vendor/gsap.min.js"></script>
+<script src="./runtime/motion.js"></script>
+<script>
+const M = Motion.film({ fps: 30, duration: 20, width: 1920, height: 1080, clock: 'smooth' });
+
+/* ---------- build the tape (static DOM, before any timeline) ---------- */
+const BASE = 88, N = 192, PITCH = 112;
+const cx = i => 120 + PITCH * i;           // i = visible index 0..15 (global BASE + i)
+const HOLE_Y = 685;
+const tape = document.getElementById('tape');
+for (let g = 0; g < N; g++) {
+  const c = document.createElement('div');
+  c.className = 'cell'; c.id = 'c' + g; c.style.left = (g * PITCH) + 'px';
+  const i = g - BASE, main = i >= 0 && i < 16;
+  const MAIN_LIT = [0, 2, 4, 6, 7, 9, 11, 13, 14, 15];
+  const lit = main ? MAIN_LIT.includes(i) :  ((g * 2654435761) >>> 0) % 100 < 46;   // deterministic: the rest of a long, half-full filter
+  c.innerHTML = `<div class="ring"></div><div class="sprocket"></div>` +
+    (lit ? `<div class="hole" id="h${g}"></div>` : '');
+  tape.appendChild(c);
+}
+
+/* ---------- words, rays, probes ---------- */
+const WORDS = [
+  { id: 'w0', text: 'gato', in: 4,   ray: 18,  out: 58,  cells: [2, 7, 13] },
+  { id: 'w1', text: 'sol',  in: 84,  ray: 94,  out: 122, cells: [0, 9, 13] },
+  { id: 'w2', text: 'rio',  in: 128, ray: 136, out: 158, cells: [4, 11, 15] },
+  { id: 'w3', text: 'mar',  in: 162, ray: 168, out: 188, cells: [6, 0, 14] },
+  { id: 'q0', text: 'lua?', in: 196, ray: 210, out: 238, cells: [7, 14, 3], query: true },
+  { id: 'q1', text: 'pão?', in: 330, ray: 340, out: 446, cells: [2, 9, 11], query: true },
+];
+const wordsEl = document.getElementById('words'), rays = document.getElementById('rays');
+const NS = 'http://www.w3.org/2000/svg';
+WORDS.forEach(w => {
+  const d = document.createElement('div'); d.className = 'word'; d.id = w.id; d.textContent = w.text; wordsEl.appendChild(d);
+  w.cells.forEach((i, k) => {
+    const l = document.createElementNS(NS, 'line');
+    l.setAttribute('x1', 960 + (k - 1) * 40); l.setAttribute('y1', 470);
+    l.setAttribute('x2', cx(i)); l.setAttribute('y2', HOLE_Y);
+    l.setAttribute('pathLength', 1); l.setAttribute('stroke-dasharray', '1 1');
+    l.setAttribute('class', w.query ? 'qry' : 'ins'); l.id = `${w.id}r${k}`;
+    l.style.strokeDashoffset = 1;
+    rays.appendChild(l);
+  });
+});
+
+/* ---------- inserts: word crashes in, three rays punch, rays leave, word leaves, holes stay ---------- */
+const litNow = new Set();
+const tapeBumps = [];
+WORDS.filter(w => !w.query).forEach(w => {
+  M.enter('#' + w.id, { at: w.in, frames: 12, ease: 'snapSettle', from: { scale: 2.2, blur: 10 } });
+  w.cells.forEach((i, k) => {
+    const r = `#${w.id}r${k}`, s = w.ray + 3 * k, land = s + 7;
+    M.kf(r, 'strokeDashoffset', [[s, 1], [land, 0, 'whip'], [land + 4, 0], [land + 12, -1, 'accelExit']]);
+    if (!litNow.has(i)) {
+      litNow.add(i);
+      M.enter('#h' + (BASE + i), { at: land, frames: 8, ease: 'softLand', from: { scale: 1.8, opacity: 0 } });
+      M.mark(land, 'press', 'punch ' + w.text + ' -> ' + (BASE + i));
+    }
+  });
+  tapeBumps.push(w.ray + 7);
+  M.exit('#' + w.id, { at: w.out, frames: 9, ease: 'accelExit', to: { y: -110, blur: 10, opacity: 0 }, hide: true });
+});
+// the paper takes each strike (one track on a wrapper; the tape itself is never tweened twice)
+const tapeW = M.wrap('#tape');
+M.kf(tapeW, 'y', tapeBumps.flatMap(p => [[p - 1, 0], [p + 1, 5, 'whip'], [p + 14, 0, 'softLand']]));
+
+/* ---------- queries: rays look, probes ring the cells they read ---------- */
+function probe(id, i) {
+  const p = document.createElement('div'); p.className = 'probe'; p.id = id;
+  p.style.left = (cx(i) - 46) + 'px'; p.style.top = (HOLE_Y - 46) + 'px';
+  document.getElementById('cam').appendChild(p); return '#' + id;
+}
+WORDS.filter(w => w.query).forEach(w => {
+  M.enter('#' + w.id, { at: w.in, frames: 12, ease: 'snapSettle', from: { scale: 2.2, blur: 10 } });
+  w.cells.forEach((i, k) => {
+    const r = `#${w.id}r${k}`, s = w.ray + 3 * k, land = s + 8;
+    M.kf(r, 'strokeDashoffset', [[s, 1], [land, 0, 'whip']]);
+    M.enter(probe(`${w.id}p${k}`, i), { at: land, frames: 9, ease: 'softLand', from: { scale: 1.7, opacity: 0 } });
+    M.mark(land, 'show', 'probe ' + w.text + ' -> ' + (BASE + i));
+  });
+});
+// lua?: the two lit reads let go, the dark read stays parked on paper (the hero frame)
+M.kf('#q0r0', 'strokeDashoffset', [[240, 0], [252, -1, 'accelExit']]);
+M.kf('#q0r1', 'strokeDashoffset', [[242, 0], [254, -1, 'accelExit']]);
+M.exit('#q0', { at: 232, frames: 8, ease: 'accelExit', to: { y: -90, blur: 8 }, hide: true });
+['#q0r0', '#q0r1', '#q0r2', '#q0p0', '#q0p1', '#q0p2'].forEach(e => M.hide(e, 330));
+// pão?: every read is lit, and each light belongs to someone else
+const TAGS = [[2, 'gato'], [9, 'sol'], [11, 'rio']];
+TAGS.forEach(([i, t], k) => {
+  const tag = document.createElement('div'); tag.className = 'tag'; tag.id = 'tag' + k; tag.textContent = t;
+  document.getElementById('c' + (BASE + i)).appendChild(tag);
+  M.enter('#tag' + k, { at: 362 + 6 * k, frames: 10, ease: 'softLand', from: { y: 18, blur: 4, opacity: 0 } });
+  M.mark(362 + 6 * k, 'show', 'tag ' + t);
+});
+[0, 1, 2].forEach(k => M.kf(`#q1r${k}`, 'strokeDashoffset', [[404 + 2 * k, 0], [416 + 2 * k, -1, 'accelExit']]));
+M.exit('#q1', { at: 404, frames: 9, ease: 'accelExit', to: { y: -100, blur: 10 }, hide: true });
+['#q1p0', '#q1p1', '#q1p2'].forEach(e => M.hide(e, 456));
+['#tag0', '#tag1', '#tag2'].forEach(e => M.exit(e, { at: 452, frames: 6, ease: 'accelExit', to: { opacity: 0 }, hide: true }));
+
+/* ---------- camera (origin 0 0: screen = s * p + (x, y)) ---------- */
+const at = (s, px, py, sx, sy) => ({ s, x: sx - s * px, y: sy - s * py });
+const K = [
+  [0,   at(1.18, 960, 600, 960, 640), null],
+  [200, at(1.24, 960, 600, 960, 640), 'cruise'],
+  [228, at(1.24, 960, 600, 960, 640), null],
+  [262, at(2.35, cx(3), HOLE_Y, 960, 640), 'glide'],
+  [329, at(2.55, cx(3), HOLE_Y, 960, 640), 'cruise'],
+  [330, at(1.40, 848, 600, 960, 680), null],             // hard cut on motion: macro -> wide, "pão?" already arriving
+  [454, at(1.50, 848, 600, 960, 680), 'cruise'],
+  [500, at(0.34, 960, HOLE_Y, 960, 640), 'glide'],
+  [600, at(0.27, 960, HOLE_Y, 960, 640), 'cruise'],
+];
+['s', 'x', 'y'].forEach(p => M.kf('#cam', p === 's' ? 'scale' : p, K.map(([f, v, e]) => e ? [f, v[p], e] : [f, v[p]])));
+M.mark(330, 'cut', 'macro -> pão?');
+
+/* ---------- the voice ---------- */
+const L = (id, a, b, gaps) => {
+  M.words(id, { at: a, mech: 'rise', dist: 40, frames: 12, gaps, smear: true });
+  M.exit(id, { at: b, frames: 8, ease: 'accelExit', to: { y: -36, blur: 8 }, hide: true });
+};
+L('#L1', 6, 74, 4);
+L('#L2', 82, 186, 4);
+L('#L3a', 196, 236, 3);
+L('#L3', 244, 326, [4, 4, 5, 5, 8]);
+L('#L4', 366, 448, [4, 9, 5, 4, 4]);
+L('#L5', 466, 534, [4, 4, 7, 5, 4, 5]);
+M.enter('#title', { at: 546, frames: 22, ease: 'snapSettle', from: { scale: 2.4, blur: 14 } });
+M.drift('#title', { prop: 'scale', from: 1, to: .93, start: 568, end: 600 });
+
+window.__ready = Motion.loaded().then(() => { if (/selftest/.test(location.search)) Motion.selfTest(M, { samples: 24 }); });
+</script>
+</body>
+</html>

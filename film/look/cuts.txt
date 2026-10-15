@@ -1,0 +1,12 @@
+# cuts from events draft.mp4.events.json (time s, frame, timecode, source)
+7.267	frame 218	0:07.27	event show 'probe lua? -> 95'
+7.467	frame 224	0:07.47	event show 'probe lua? -> 91'
+11.000	frame 330	0:11.00	event hide '#q0r0'
+11.600	frame 348	0:11.60	event show 'probe pão? -> 90'
+11.800	frame 354	0:11.80	event show 'probe pão? -> 99'
+12.067	frame 362	0:12.07	event show 'tag gato'
+12.267	frame 368	0:12.27	event show 'tag sol'
+12.467	frame 374	0:12.47	event show 'tag rio'
+15.200	frame 456	0:15.20	event hide '#q1p0'
+# detected but not in events:
+18.200	frame 546	0:18.20	scene 0.15 + corr 0.69 spike x2.7
